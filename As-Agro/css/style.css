@@ -1,0 +1,1582 @@
+/* Root Variables */
+:root {
+    --primary-color: #00ff9d;
+    --primary-hover: rgba(0, 255, 157, 0.8);
+    --secondary-color: #ff6b6b;
+    --background-dark: #121212;
+    --background-darker: #0a0a0a;
+    --text-light: #ffffff;
+    --text-gray: #aaaaaa;
+    --text-green: #00ff9d;
+    --text-green-light: #7affcd;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --nav-bg: rgba(0, 0, 0, 0.9);
+    --transparent-black: rgba(0, 0, 0, 0.8);
+    --transparent-black-light: rgba(0, 0, 0, 0.6);
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-green);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+}
+
+/* Navigation */
+.navbar {
+    background: var(--transparent-black);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    color: var(--text-green) !important;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    color: var(--text-green) !important;
+    margin: 0 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--text-green-light) !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    padding: 0.5rem !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Loading Animation */
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-darker);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    width: 80px;
+    height: 80px;
+    border: 5px solid var(--background-dark);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite, glow 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px white; }
+    50% { box-shadow: 0 0 40px white; }
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background:url('https://i.pinimg.com/736x/94/8e/ab/948eab2aa46de6d81824876d93dd7c69.jpg')  center/cover;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    color: var(--text-green);
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--transparent-black-light);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background: var(--transparent-white-light);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 255, 157, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-green-light);
+}
+
+/* Statistics Section */
+.stats {
+    background: var(--transparent-black);
+    color: var(--text-green);
+}
+
+.stat-card {
+    background: var(--transparent-black-light);
+    padding: 2rem;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    background: var(--transparent-black);
+}
+
+.counter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-green);
+}
+
+.stat-card p {
+    color: var(--text-green-light);
+}
+
+/* Featured Products */
+.featured-products {
+    background: var(--transparent-black-light);
+    color: var(--text-green);
+    padding: 4rem 0;
+}
+
+.product-card {
+    background: var(--transparent-black);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-overlay {
+    background: var(--transparent-black);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-info {
+    background: var(--transparent-black);
+    color: var(--text-green);
+    padding: 1.5rem;
+}
+
+.product-info h4 {
+    color: var(--text-green);
+}
+
+.product-info p {
+    color: var(--text-green-light);
+}
+
+/* CTA Section */
+.cta {
+    background: var(--transparent-black);
+    color: var(--text-green);
+    padding: 4rem 0;
+}
+
+.cta h2 {
+    color: var(--text-green);
+}
+
+.cta p {
+    color: var(--text-green-light);
+}
+
+/* Features Section */
+.features {
+    background: var(--transparent-black-light);
+    color: var(--text-green);
+    padding: 4rem 0;
+}
+
+.feature-card {
+    background: var(--transparent-black);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(0, 0, 0, 0.251);
+}
+
+.feature-icon {
+    color: var(--text-green);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card p {
+    color: var(--text-green-light);
+}
+
+.feature-card h3 {
+    color: var(--text-green);
+}
+
+/* Testimonials Section */
+.testimonials {
+    background: var(--transparent-black-light);
+    color: var(--text-green);
+    padding: 4rem 0;
+}
+
+.testimonial-card {
+    background: var(--transparent-black);
+    border-radius: 10px;
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonial-card p {
+    color: var(--text-green-light);
+}
+
+.testimonial-author h5 {
+    color: var(--text-green);
+}
+
+/* Newsletter Section */
+.newsletter {
+    background: var(--transparent-black);
+    color: var(--text-green);
+    padding: 4rem 0;
+}
+
+.newsletter h2 {
+    color: var(--text-green);
+}
+
+.newsletter p {
+    color: var(--text-green-light);
+}
+
+.newsletter-form input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-green);
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(0, 255, 157, 0.7);
+}
+
+/* Footer */
+footer {
+    background: var(--transparent-black);
+    color: var(--text-green);
+    padding: 3rem 0;
+}
+
+.footer-title {
+    color: var(--text-green);
+}
+
+.footer-links a {
+    color: var(--text-green-light);
+}
+
+.footer-links a:hover {
+    color: var(--text-green);
+}
+
+/* Global Card Styles */
+.card {
+    background: var(--transparent-black);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        margin: 1rem;
+    }
+    
+    .stat-card, .feature-card, .testimonial-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Products Grid */
+.products {
+    padding: 5rem 0;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.product-content {
+    padding: 1.5rem;
+}
+
+/* Contact Form */
+.contact {
+    padding: 5rem 0;
+    background: var(--background-darker);
+}
+
+.contact-form {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-green);
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.form-control::placeholder {
+    color: rgba(0, 255, 157, 0.7);
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-green);
+    box-shadow: 0 0 0 2px white;
+}
+
+/* Info Section */
+.info {
+    background: var(--background-darker);
+    position: relative;
+}
+
+.info .section-title {
+    color: var(--text-green);
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.info p {
+    color: var(--text-green-light);
+}
+
+.info img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.info img:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .info .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Footer */
+.footer {
+    background: var(--background-darker);
+    padding: 4rem 0 2rem;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+}
+
+.footer-title {
+    color: var(--text-green);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--text-green-light);
+}
+
+.footer-links a:hover {
+    color: var(--text-green);
+}
+
+.social-links {
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    color: var(--text-green);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--text-green-light);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .navbar-collapse {
+        background: var(--nav-bg);
+        padding: 1rem;
+        border-radius: 10px;
+        margin-top: 1rem;
+    }
+    
+    .feature-card {
+        margin-bottom: 2rem;
+    }
+    
+    .contact-form {
+        margin-top: 2rem;
+    }
+}
+
+/* Button Styles */
+.btn-primary {
+    background: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), var(--background-darker);
+    background-size: cover;
+    background-position: center;
+    padding: 10rem 0 4rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* Home Page Sections */
+.about-home, .services-home, .why-us {
+    background: var(--background-darker);
+}
+
+.section-title {
+    color: var(--text-green);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.lead {
+    color: var(--text-green-light);
+    font-size: 1.2rem;
+}
+
+/* Achievement Cards */
+.achievement-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+}
+
+.achievement-card i {
+    color: var(--text-green);
+    font-size: 2rem;
+}
+
+.achievement-card h4 {
+    color: var(--text-green);
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+}
+
+.achievement-card p {
+    color: var(--text-green-light);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Service Cards */
+.service-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.service-card h3 {
+    color: var(--text-green);
+    margin: 1rem 0;
+}
+
+.service-card p {
+    color: var(--text-green-light);
+    margin: 0;
+}
+
+/* Feature Items */
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.feature-item i {
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+}
+
+.feature-item h4 {
+    color: var(--text-green);
+    margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+    color: var(--text-green-light);
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .achievement-card {
+        margin-bottom: 1rem;
+    }
+    
+    .service-card {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Gallery Page */
+.gallery-filter {
+    background: var(--background-darker);
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-buttons .btn {
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.filter-buttons .btn.active {
+    background: white;
+    color: black;
+    border-color: white;
+}
+
+.gallery-grid {
+    background: var(--background-darker);
+}
+
+.gallery-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 1.5rem;
+    color: var(--text-green);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.gallery-overlay p {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: var(--text-green-light);
+}
+
+/* Lightbox Customization */
+.lb-data .lb-caption {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-green);
+}
+
+.lb-data .lb-details {
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .gallery-card img {
+        height: 250px;
+    }
+    
+    .filter-buttons .btn {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Override Bootstrap Primary Color */
+.btn-primary {
+    background-color: white !important;
+    border-color: white !important;
+    color: black !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover) !important;
+    border-color: white !important;
+    color: black !important;
+}
+
+.text-primary {
+    color: var(--text-green) !important;
+}
+
+/* Links */
+a {
+    color: var(--text-green);
+}
+
+a:hover {
+    color: var(--text-green-light);
+}
+
+/* Progress Bars and Other Elements */
+.progress-bar {
+    background-color: white;
+}
+
+/* Form Focus States */
+.form-control:focus {
+    border-color: white;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+/* Custom Buttons */
+.btn-outline-primary {
+    color: var(--text-green);
+    border-color: var(--text-green);
+}
+
+.btn-outline-primary:hover {
+    background: var(--text-green);
+    color: black;
+}
+
+/* Section Titles */
+.section-title {
+    color: var(--text-green);
+}
+
+/* Card Accents */
+.card-accent {
+    border-color: var(--text-green);
+}
+
+/* Icons */
+.icon-primary {
+    color: var(--text-green);
+}
+
+/* Borders */
+.border-primary {
+    border-color: var(--text-green) !important;
+}
+
+/* Backgrounds */
+.bg-primary {
+    background-color: var(--transparent-black) !important;
+}
+
+/* Active States */
+.active {
+    color: var(--text-green) !important;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--text-green);
+    color: black !important;
+}
+
+/* Pagination */
+.page-link {
+    color: var(--text-green);
+}
+
+.page-item.active .page-link {
+    background-color: var(--text-green);
+    border-color: var(--text-green);
+    color: black;
+}
+
+/* Description Text */
+.description {
+    color: var(--text-green-light);
+}
+
+/* Alert Text */
+.alert {
+    color: var(--text-green);
+}
+
+/* Badge Text */
+.badge {
+    color: var(--text-green);
+}
+
+/* Table Text */
+table {
+    color: var(--text-green-light);
+}
+
+th {
+    color: var(--text-green);
+}
+
+/* Small Text */
+small {
+    color: var(--text-green-light);
+}
+
+/* Blockquote */
+blockquote {
+    color: var(--text-green);
+    border-left: 4px solid var(--text-green);
+}
+
+/* Code */
+code {
+    color: var(--text-green);
+}
+
+/* Mark */
+mark {
+    background-color: rgba(0, 255, 157, 0.2);
+    color: var(--text-green);
+}
+
+/* Auth Pages Styling */
+.auth-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.auth-card {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.6s ease forwards;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.auth-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-green);
+}
+
+.auth-card .form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+.auth-card .form-control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--text-green);
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.25);
+}
+
+.auth-card .form-label {
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    color: var(--text-green);
+}
+
+.auth-card .form-control:focus + .form-label,
+.auth-card .form-control:not(:placeholder-shown) + .form-label {
+    transform: translateY(-25px);
+    font-size: 0.85em;
+    color: var(--text-green-light);
+}
+
+.auth-card .btn-primary {
+    background: linear-gradient(45deg, var(--text-green), var(--text-green-light)) !important;
+    border: none !important;
+    color: var(--background-dark) !important;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+}
+
+.auth-card .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.auth-card .btn-primary:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.auth-card input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.auth-card .form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.auth-card .form-check-input:checked {
+    background-color: var(--text-green);
+    border-color: var(--text-green);
+}
+
+.auth-card h2 {
+    color: var(--text-green);
+    margin-bottom: 2rem;
+}
+
+.auth-card label {
+    color: var(--text-green);
+}
+
+.auth-card .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-green);
+}
+
+.auth-card .form-control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--text-green);
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.25);
+}
+
+.auth-card .form-control::placeholder {
+    color: rgba(0, 255, 157, 0.5);
+}
+
+.auth-card .btn-primary {
+    background: var(--text-green);
+    border-color: var(--text-green);
+    color: black;
+}
+
+.auth-card .btn-primary:hover {
+    background: var(--text-green-light);
+    border-color: var(--text-green);
+}
+
+.auth-card .btn-outline-secondary {
+    color: var(--text-green);
+    border-color: var(--text-green);
+}
+
+.auth-card .btn-outline-secondary:hover {
+    background: var(--text-green);
+    color: black;
+}
+
+.auth-card a {
+    color: var(--text-green);
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    color: var(--text-green-light);
+}
+
+.auth-card .form-check-label {
+    color: var(--text-green-light);
+}
+
+.auth-card .form-check-input:checked {
+    background-color: var(--text-green);
+    border-color: var(--text-green);
+}
+
+/* Alert Styles */
+.alert {
+    z-index: 1000;
+}
+
+.alert-success {
+    background: rgba(0, 255, 157, 0.2);
+    border-color: var(--text-green);
+    color: var(--text-green);
+}
+
+.alert-danger {
+    background: rgba(255, 99, 71, 0.2);
+    border-color: tomato;
+    color: tomato;
+}
+
+/* Form Check Styling */
+.form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.form-check-label {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Authentication Pages */
+.auth-section {
+    min-height: calc(100vh - 76px);
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2') center/cover;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.auth-card .form-control {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.auth-card .form-control:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--text-green);
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.25);
+}
+
+.auth-card .form-label {
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    color: var(--text-green);
+}
+
+.auth-card .form-control:focus + .form-label,
+.auth-card .form-control:not(:placeholder-shown) + .form-label {
+    transform: translateY(-25px);
+    font-size: 0.85em;
+    color: var(--text-green-light);
+}
+
+.auth-card .btn-primary {
+    background: linear-gradient(45deg, var(--text-green), var(--text-green-light)) !important;
+    border: none !important;
+    color: var(--background-dark) !important;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+}
+
+.auth-card .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.auth-card .btn-primary:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.auth-card input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.auth-card .form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.auth-card .form-check-input:checked {
+    background-color: var(--text-green);
+    border-color: var(--text-green);
+}
+
+.auth-card h2 {
+    color: var(--text-green);
+    margin-bottom: 2rem;
+}
+
+.auth-card label {
+    color: var(--text-green);
+}
+
+.auth-card .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-green);
+}
+
+.auth-card .form-control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--text-green);
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.25);
+}
+
+.auth-card .form-control::placeholder {
+    color: rgba(0, 255, 157, 0.5);
+}
+
+.auth-card .btn-primary {
+    background: var(--text-green);
+    border-color: var(--text-green);
+    color: black;
+}
+
+.auth-card .btn-primary:hover {
+    background: var(--text-green-light);
+    border-color: var(--text-green);
+}
+
+.auth-card .btn-outline-secondary {
+    color: var(--text-green);
+    border-color: var(--text-green);
+}
+
+.auth-card .btn-outline-secondary:hover {
+    background: var(--text-green);
+    color: black;
+}
+
+.auth-card a {
+    color: var(--text-green);
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    color: var(--text-green-light);
+}
+
+.auth-card .form-check-label {
+    color: var(--text-green-light);
+}
+
+.auth-card .form-check-input:checked {
+    background-color: var(--text-green);
+    border-color: var(--text-green);
+}
+
+/* Animations */
+@keyframes authBoxAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Form Check Styling */
+.form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.form-check-label {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Authentication Pages */
+.auth-section {
+    min-height: calc(100vh - 76px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-darker) 100%);
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform-origin: center;
+    animation: authBoxAppear 0.6s ease-out;
+}
+
+.auth-title {
+    color: var(--text-light);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.auth-subtitle {
+    color: var(--text-gray);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-form .form-floating {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.auth-form .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    height: 55px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.auth-form .form-control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 255, 157, 0.2);
+}
+
+.auth-form .form-floating label {
+    color: var(--text-gray);
+    padding: 1rem;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-gray);
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: var(--text-light);
+}
+
+.auth-button {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--primary-color) !important;
+    border: none !important;
+    color: var(--background-dark) !important;
+    font-weight: 600;
+    transition: all 0.3s ease !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-button:hover {
+    background: var(--primary-hover) !important;
+    transform: translateY(-2px);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+}
+
+.auth-button i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.auth-button:hover i {
+    transform: translateX(3px);
+}
+
+.auth-links {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.forgot-password {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--text-light);
+}
+
+.signup-link {
+    margin-top: 1rem;
+    color: var(--text-gray);
+}
+
+.signup-text {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-text:hover {
+    color: var(--primary-hover);
+}
+
+.social-login {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.social-login p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.social-login p::before,
+.social-login p::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 70px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-login p::before {
+    left: 0;
+}
+
+.social-login p::after {
+    right: 0;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-btn.google:hover {
+    color: #DB4437;
+}
+
+.social-btn.facebook:hover {
+    color: #4267B2;
+}
+
+.social-btn.twitter:hover {
+    color: #1DA1F2;
+}
+
+/* Animations */
+@keyframes authBoxAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Form Check Styling */
+.form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.form-check-label {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+/*  */
